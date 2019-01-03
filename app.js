@@ -9,7 +9,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/node-auth')
+mongoose.connect('mongodb://restaurant:restaurant1@ds139614.mlab.com:39614/restaurant')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
