@@ -50,9 +50,7 @@ userController.doLogin = function (req, res) {
       const token = jwt.sign(user.toJSON(), 'keyboard cat');
       return res.json({ user, token });
     });
-  })(req, res, function () {
-    res.redirect('/');
-  });
+  })(req, res);
 };
 
 // logout
