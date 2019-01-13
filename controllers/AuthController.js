@@ -36,7 +36,6 @@ userController.login = function (req, res) {
 // Post login
 userController.doLogin = function (req, res) {
   passport.authenticate('local', { session: false }, (err, user, info) => {
-    console.log('user==>', user)
     if (err || !user) {
       return res.status(400).json({
         message: 'Something is not right',
@@ -48,7 +47,7 @@ userController.doLogin = function (req, res) {
         res.send(err);
       }
       // generate a signed son web token with the contents of user object and return it in the response
-      const token = jwt.sign(user, 'keyboard cat');
+      const token = jwt.sign(user.toJSON(), 'keyboard cat');
       return res.json({ user, token });
     });
   })(req, res, function () {
